@@ -144,6 +144,7 @@ environment specification are maintained in the course repository:
 
 - [conversion notebook](https://github.com/VinciGit00/ministral-3-mlx-4bit/blob/main/01_ministral_3_mlx_quantization.ipynb)
 - [repeatable benchmark](https://github.com/VinciGit00/ministral-3-mlx-4bit/blob/main/benchmark_mlx.py)
+- [recorded benchmark results](https://github.com/VinciGit00/ministral-3-mlx-4bit/blob/main/benchmark_results.md)
 - [requirements](https://github.com/VinciGit00/ministral-3-mlx-4bit/blob/main/requirements.txt)
 - [tested version lock](https://github.com/VinciGit00/ministral-3-mlx-4bit/blob/main/requirements-lock.txt)
 
