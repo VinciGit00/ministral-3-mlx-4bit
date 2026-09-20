@@ -166,6 +166,12 @@ and generated 116 tokens.
 | Peak memory reported by MLX | 2.458 GiB |
 | Quality evaluation | Not performed for this conversion |
 
+The same four prompts were also run with identical greedy decoding against an
+unquantized MLX BF16 baseline. Both variants passed all four functional checks;
+the chart compares runtime only and does not claim a quality improvement.
+
+![BF16 versus MLX 4-bit runtime comparison](benchmark_artifacts/benchmark_comparison.png)
+
 These values depend on hardware, software versions, prompt length, and cache
 state. They must not be compared with published BF16 scores as accuracy
 results. The upstream model card contains Mistral AI's evaluation tables; this
