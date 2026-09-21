@@ -1,0 +1,89 @@
+{
+  "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+  "max_tokens": 96,
+  "sampler": "default greedy",
+  "results": {
+    "MLX BF16": {
+      "model": "/Volumes/MV work/ministral-3-benchmark/Ministral-3-3B-Instruct-2512-bf16-mlx",
+      "cases": [
+        {
+          "case": "arithmetic",
+          "seconds": 6.38027574995067,
+          "output_tokens": 57,
+          "tokens_per_second": 8.933783151996323,
+          "passed": true,
+          "answer": "102\n\nExplanation: 17 multiplied by 6 is calculated as (10 + 7) \u00d7 6 = (10 \u00d7 6) + (7 \u00d7 6) = 60 + 42 = 102."
+        },
+        {
+          "case": "science",
+          "seconds": 2.8334250829648226,
+          "output_tokens": 24,
+          "tokens_per_second": 8.470313947700012,
+          "passed": true,
+          "answer": "Ice floats on liquid water because its solid form is less dense due to its open, crystalline hydrogen-bonded structure."
+        },
+        {
+          "case": "italian",
+          "seconds": 1.7187400000402704,
+          "output_tokens": 9,
+          "tokens_per_second": 5.236394102533907,
+          "passed": true,
+          "answer": "La capitale d'Italia \u00e8 **Roma**."
+        },
+        {
+          "case": "json_instruction",
+          "seconds": 1.831395624903962,
+          "output_tokens": 10,
+          "tokens_per_second": 5.460316637222718,
+          "passed": true,
+          "answer": "```json\n{\"status\":\"ok\"}\n```"
+        }
+      ],
+      "pass_rate": 1.0,
+      "mean_seconds": 3.190959114464931,
+      "median_seconds": 2.3324103539343923,
+      "mean_output_tokens_per_second": 7.0252019598632405
+    },
+    "MLX 4-bit": {
+      "model": "/Users/marco/github/LLM-crash-course/20-mlx-quantization/artifacts/Ministral-3-3B-Instruct-2512-4bit",
+      "cases": [
+        {
+          "case": "arithmetic",
+          "seconds": 3.9474459160119295,
+          "output_tokens": 97,
+          "tokens_per_second": 24.572850917739302,
+          "passed": true,
+          "answer": "102\n\nExplanation: 17 multiplied by 6 is the same as adding 17 six times (17 + 17 + 17 + 17 + 17 + 17), which equals 102. Alternatively, you can break it down using the distributive property of multiplication over addition: (20 - 3) \u00d7 6 = 120 - 18 = 102"
+        },
+        {
+          "case": "science",
+          "seconds": 1.5223562920000404,
+          "output_tokens": 22,
+          "tokens_per_second": 14.451281947340233,
+          "passed": true,
+          "answer": "Ice floats on liquid water because it is less dense due to its open, crystalline molecular structure when frozen."
+        },
+        {
+          "case": "italian",
+          "seconds": 1.2651049580890685,
+          "output_tokens": 9,
+          "tokens_per_second": 7.114034248663788,
+          "passed": true,
+          "answer": "La capitale d'Italia \u00e8 **Roma**."
+        },
+        {
+          "case": "json_instruction",
+          "seconds": 1.2779309169854969,
+          "output_tokens": 10,
+          "tokens_per_second": 7.825149127457482,
+          "passed": true,
+          "answer": "```json\n{\"status\":\"ok\"}\n```"
+        }
+      ],
+      "pass_rate": 1.0,
+      "mean_seconds": 2.003209520771634,
+      "median_seconds": 1.4001436044927686,
+      "mean_output_tokens_per_second": 13.490829060300202
+    }
+  }
+}

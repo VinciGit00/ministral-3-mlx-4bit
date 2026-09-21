@@ -1,4 +1,4 @@
-# Benchmark results
+# Historical M4 smoke benchmark results
 
 This report records the reproducible smoke benchmark for the converted
 checkpoint. It is a functional regression check, not a general accuracy
@@ -51,3 +51,36 @@ The separate single-prompt runtime smoke test measured approximately:
 Token-per-second and memory values vary with hardware, OS, runtime versions,
 prompt length, and cache state. The functional checks are intentionally small
 and do not establish factuality, safety, or BF16 quality parity.
+
+## Measured paired evaluation — 2026-09-21
+
+The current comparison was run on **Apple M1 Pro, 16 GB**, macOS 26.6.2,
+Python 3.13.7. It is separate from the historical M4 measurements above.
+Both models use greedy decoding and `fix_mistral_regex=True`.
+
+| Metric | MLX BF16 | MLX 4-bit |
+| --- | ---: | ---: |
+| Mean inference latency, four smoke prompts | 2.60 s | 1.83 s |
+| Mean output speed, four smoke prompts | 8.51 tok/s | 11.19 tok/s |
+| GSM8K numeric exact match, 100 test examples | 87/100 (87%) | 87/100 (87%) |
+| 95% Wilson accuracy interval | 79.02%–92.24% | 79.02%–92.24% |
+| Invalid final answers (scored incorrect) | 7 | 4 |
+
+Quantized minus baseline: **0.0 pp**, with paired bootstrap 95% interval
+**[−7.0, +7.0] pp** (2,000 resamples). Seven examples regressed and seven
+improved; equal totals do not prove general quality parity.
+
+Accuracy uses the pinned GSM8K test split, 100 random examples (seed 42), the
+same zero-shot prompt, 512 maximum generated tokens, and normalized numeric
+exact match. Runtime uses four distinct smoke prompts and 96 maximum tokens.
+The test labels were never included in prompts or used to tune the models.
+
+![Measured runtime and accuracy](benchmark_artifacts/benchmark_comparison.png)
+
+See the [method and reproduction commands](README.md#accuracy-source-precision-versus-quantized),
+[raw accuracy results and provenance](benchmark_artifacts/accuracy/accuracy_results.json),
+[accuracy report](benchmark_artifacts/accuracy/accuracy_results.md), and
+[current runtime results](benchmark_artifacts/benchmark_results.json).
+The previous M4 comparison is preserved in
+[historical_m4](benchmark_artifacts/historical_m4/benchmark_results.json).
+Downloaded/converted weights are removed after evaluation; reports are retained.
